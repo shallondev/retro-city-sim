@@ -1,5 +1,6 @@
-import pygame, sys
+import pygame, sys # type: ignore
 from settings import *
+from level import Level
 
 class Game:
     def __init__(self):
@@ -10,6 +11,8 @@ class Game:
         pygame.display.set_caption('Retro City Sim') # Window name
         self.clock = pygame.time.Clock()
 
+        self.level = Level()
+
 
     def run(self):
         while True:
@@ -18,7 +21,10 @@ class Game:
                     pygame.quit()
                     sys.exit()
 
-            self.screen.fill('dark green')
+            self.screen.fill('#9ec5e2')
+
+            self.level.run(self.screen)
+
             pygame.display.update()
             self.clock.tick(FPS)
 
